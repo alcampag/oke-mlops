@@ -6,18 +6,6 @@ terraform {
       version = "5.46.0"
       configuration_aliases = [oci.home]
     }
-    local = {
-      source = "hashicorp/local"
-      version = "2.5.1"
-    }
-    helm = {
-      source = "hashicorp/helm"
-      version = "2.14.0"
-    }
-    null = {
-      source = "hashicorp/null"
-      version = "3.2.2"
-    }
   }
 }
 

@@ -6,9 +6,9 @@ data "oci_identity_region_subscriptions" "home" {
   }
 }
 
-data "oci_containerengine_cluster_kube_config" "kube_config" {
+/*data "oci_containerengine_cluster_kube_config" "kube_config" {
   cluster_id = module.oke.cluster_id
-}
+}*/
 
 data "oci_containerengine_node_pool_option" "oke_images" {
   node_pool_option_id = "all"
