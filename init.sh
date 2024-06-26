@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/${OCI_CCL_DESTINATION_DIR}
+cd ~/"${OCI_CCL_DESTINATION_DIR}" || exit
 tofu init || exit
 tofu apply -var="tenancy_ocid=$OCI_TENANCY" || exit
 export PUB_LB_NSG_ID=$(tofu output -raw pub_lb_nsg_id)
