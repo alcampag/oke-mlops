@@ -35,7 +35,7 @@ helm upgrade --install istio-base istio/base -n istio-system --version $ISTIO_VE
 helm upgrade --install istiod istio/istiod -n istio-system --version $ISTIO_VERSION --wait || exit
 
 echo "Installing Istio ingress gateway"
-helm upgrade --install istio-ingressgateway istio/gateway -f istio-ingress-values.yaml --version $ISTIO_VERSION -n istio-ingress --create-namespace --wait || exit
+helm upgrade --install istio-ingressgateway istio/gateway -f istio-ingress-values.yaml --version $ISTIO_VERSION -n istio-system --wait || exit
 
 echo "Installing Knative"
 export KNATIVE_VERSION="v1.14.1"
