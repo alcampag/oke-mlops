@@ -2,7 +2,7 @@
 
 cd ~/${OCI_CCL_DESTINATION_DIR}
 tofu init || exit
-tofu apply -auto-approve -var="tenancy_ocid=$OCI_TENANCY" || exit
+tofu apply -var="tenancy_ocid=$OCI_TENANCY" || exit
 export PUB_LB_NSG_ID=$(tofu output -raw pub_lb_nsg_id)
 export OKE_REGION=$(tofu output -raw region)
 export OKE_ID=$(tofu output -raw oke_cluster_id)
