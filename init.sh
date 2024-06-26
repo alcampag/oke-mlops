@@ -28,8 +28,14 @@ helm repo add istio https://istio-release.storage.googleapis.com/charts
 echo "Waiting for at least one node to be ready"
 until kubectl get nodes | grep -i "Ready"; do sleep 1 ;  done
 
+export ISTIO_VERSION="1.20.5"
+echo "Installing Istio"
+
+helm upgrade --install istio-base istio/base -n istio-system --version $ISTIO_VERSION --create-namespace --wait || exit
+helm upgrade --install istiod istio/istiod -n istio-system --version $ISTIO_VERSION --wait || exit
+
 echo "Installing Istio ingress gateway"
-helm upgrade --install istio-ingressgateway istio/gateway -f istio-ingress-values.yaml --version 1.20.5 -n istio-ingress --create-namespace || exit
+helm upgrade --install istio-ingressgateway istio/gateway -f istio-ingress-values.yaml --version $ISTIO_VERSION -n istio-ingress --create-namespace --wait || exit
 
 echo "Installing Knative"
 export KNATIVE_VERSION="v1.14.1"

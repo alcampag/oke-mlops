@@ -9,3 +9,7 @@ output "oke_cluster_id" {
 output "region" {
   value = var.region
 }
+
+output "compartment_id" {
+  value = var.compartment_ocid
+}
