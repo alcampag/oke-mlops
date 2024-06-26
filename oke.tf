@@ -111,24 +111,3 @@ resource "oci_containerengine_addon" "oke_metrics_server" {
   remove_addon_resources_on_delete = false
   depends_on = [module.oke, oci_containerengine_addon.oke_cert_manager]
 }
-
-/*resource "oci_containerengine_addon" "oke_istio" {
-  addon_name                       = "Istio"
-  cluster_id                       = module.oke.cluster_id
-  remove_addon_resources_on_delete = true
-  configurations {
-    key = "enableIngressGateway"
-    value = "false"
-  }
-  configurations {
-    key = "customizeConfigMap"
-    value = "true"
-  }
-  depends_on = [module.oke, oci_containerengine_addon.oke_cert_manager]
-}*/
-#
-# module "oke-install" {
-#   source = "./modules/oke-install"
-#   lb_nsg_id = module.oke.pub_lb_nsg_id
-#   pool_ips = module.oke.worker_pool_ips
-# }
