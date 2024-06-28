@@ -9,9 +9,10 @@ Run the command in INIT.md, this will generate VCN + OKE cluster with:
 # Step 2
 Install MLFlow:
 ----------------------------------
-Note: if not in home region, specify --region <home>
 oci iam customer-secret-key create --display-name s3-mlflow --user-id $OCI_CS_USER_OCID
 Annotate id and key
+oci os ns get --query data --raw-output
+Annotate value (it's the namespace name)
 ----------------------------------
 helm install oke-mlflow oci://registry-1.docker.io/bitnamicharts/mlflow -n mlflow --create-namespace -f 
 
