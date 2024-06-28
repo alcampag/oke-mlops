@@ -1,0 +1,16 @@
+tracking:
+  service:
+    annotations:
+
+
+run:
+  enabled: false
+
+minio:
+  enabled: false
+
+externalS3:
+  host: {object-storage-namespace}.compat.objectstorage.{region}.oraclecloud.com
+  bucket: mlflow
+  accessKeyID: {key_id}
+  accessKeySecret: {key_secret}

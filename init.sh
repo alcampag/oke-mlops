@@ -2,9 +2,8 @@
 
 cd ~/"${OCI_CCL_DESTINATION_DIR}" || exit
 tofu init || exit
-tofu apply -var="tenancy_ocid=$OCI_TENANCY" || exit
+tofu apply -var="tenancy_ocid=$OCI_TENANCY" -var="region=$OCI_REGION" || exit
 export PUB_LB_NSG_ID=$(tofu output -raw pub_lb_nsg_id)
-export OKE_REGION=$(tofu output -raw region)
 export OKE_ID=$(tofu output -raw oke_cluster_id)
 
 rm -f istio-ingress-values.yaml
@@ -21,7 +20,7 @@ service:
     }
 EOF
 
-oci ce cluster create-kubeconfig --cluster-id $OKE_ID --file $HOME/.kube/config --region $OKE_REGION --token-version 2.0.0  --kube-endpoint PUBLIC_ENDPOINT
+oci ce cluster create-kubeconfig --cluster-id $OKE_ID --file $HOME/.kube/config --region $OCI_REGION --token-version 2.0.0  --kube-endpoint PUBLIC_ENDPOINT
 
 helm repo add istio https://istio-release.storage.googleapis.com/charts
 
