@@ -40,8 +40,8 @@ kubectl apply -f kserve/sa.yaml
 # Step 4
 OCI Data Science:
 ----------------------------------
-Create OCI Data Science project
-Clone examples
+Create OCI Data Science project, default values are enough
+Clone example
 Set the MLFlow url and password on the code
 Run the notebook
 ----------------------------------
