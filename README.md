@@ -5,9 +5,10 @@ Run the command in INIT.md, this will generate VCN + OKE cluster with:
 * Istio + Istio ingressGateway
 * KNative
 * KServe
+  
 
-Have a look at the oke cluster, also notice the LB and annotate the NSG OCID value.  
-Then, open the code editor into the cloned directory
+* Have a look at the oke cluster, also notice the LB and **write down** the NSG OCID value.  
+* You can also open the code editor, if you do not feel comfortable with the command line
 
 # Step 2: Install MLFlow
 
