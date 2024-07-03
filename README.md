@@ -14,6 +14,7 @@ Then, open the code editor into the cloned directory
 # Step 2
 Install MLFlow:
 ----------------------------------
+cd $OCI_CCL_DESTINATION_DIR
 oci iam customer-secret-key create --display-name s3-mlflow --user-id $OCI_CS_USER_OCID
 Annotate id and key
 oci os ns get --query data --raw-output
@@ -29,6 +30,7 @@ echo "MLflow URL: http://$SERVICE_IP/"
 echo Username: $(kubectl get secret --namespace mlflow oke-mlflow-tracking -o jsonpath="{ .data.admin-user }" | base64 -d)
 echo Password: $(kubectl get secret --namespace mlflow oke-mlflow-tracking -o jsonpath="{.data.admin-password }" | base64 -d)
 Annotate user and password
+Try to access MLFlow interface
 ----------------------------------
 # Step 3
 Configure KServe:
@@ -41,8 +43,13 @@ kubectl apply -f kserve/sa.yaml
 OCI Data Science:
 ----------------------------------
 Create OCI Data Science project, default values are enough
-Clone example
-Set the MLFlow url and password on the code
+Clone repository https://github.com/alcampag/oke-mlops.git
+Open terminal (File -> New -> Terminal)
+python3 -m pip install oci-mlflow
+python3 -m pip install boto3
+In case, restart kernel
+Open mlflow.ipynb
+Fill out the values with the ones we have collected
 Run the notebook
 ----------------------------------
 # Step 5

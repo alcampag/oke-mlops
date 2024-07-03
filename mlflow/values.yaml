@@ -8,6 +8,11 @@ tracking:
       "oci.oraclecloud.com/oci-network-security-groups": "{pub_lb_nsg_id}",
       "oci.oraclecloud.com/security-rule-management-mode": "None"
     }
+  extraEnvVars:
+    - name: MLFLOW_S3_ENDPOINT_URL
+      value: "https://{object-storage-namespace}.compat.objectstorage.{region}.oraclecloud.com"
+    - name: AWS_DEFAULT_REGION
+      value: "{region}"
 
 run:
   enabled: false
