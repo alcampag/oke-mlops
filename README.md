@@ -1,4 +1,4 @@
-# Step 1
+# Step 1: Run the infrastructure script
 Run the command in INIT.md, this will generate VCN + OKE cluster with:
 * cert-manager
 * metrics-server
@@ -8,10 +8,9 @@ Run the command in INIT.md, this will generate VCN + OKE cluster with:
 
 Have a look at the oke cluster, also notice the LB and annotate the NSG OCID value.  
 Then, open the code editor into the cloned directory
-----------------------------------------
-# Step 2
-Install MLFlow:
-----------------------------------
+
+# Step 2: Install MLFlow
+
 * Be sure to be in the right folder for all the steps below:  
 `cd $HOME/$OCI_CCL_DESTINATION_DIR`
 * Create a customer secret key. **Write down** id and key:  
@@ -36,10 +35,8 @@ Install MLFlow:
 ```
 * Explore the MLFlow interface
 
-----------------------------------
-# Step 3
-OCI Data Science:
-----------------------------------
+# Step 3: OCI Data Science
+
 * Create OCI Data Science project, default values are enough
 * Clone repository https://github.com/alcampag/oke-mlops.git
 * Open a terminal (File -> New -> Terminal) and run:  
@@ -51,10 +48,8 @@ pip3 install boto3
 * Fill out the values with the ones we have collected in Step 2
 * Run the notebook, restart kernel in case of errors
 
-----------------------------------
-# Step 4
-Configure KServe and deploy the model
-----------------------------------
+# Step 4: Configure KServe and deploy the model
+
 * Go in the MLFlow interface, select a model to deploy and **write down** the artifact path
 * Fill in the file kserve/s3creds.yaml with the values we have previously annotated, then run:  
 ```
