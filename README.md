@@ -45,8 +45,8 @@ OCI Data Science:
 Create OCI Data Science project, default values are enough
 Clone repository https://github.com/alcampag/oke-mlops.git
 Open terminal (File -> New -> Terminal)
-python3 -m pip install oci-mlflow
-python3 -m pip install boto3
+pip3 install oci-mlflow
+pip3 install boto3
 In case, restart kernel
 Open mlflow.ipynb
 Fill out the values with the ones we have collected
@@ -58,7 +58,9 @@ Deploy a model
 Go in the MLFlow interface, select a model to deploy and annotate the model path
 Fill in kserve/inferenceService.yaml
 kubectl apply -f kserve/inferenceService.yaml
-
+kubectl describe inferenceservice.serving.kserve.io/wine-predictor
+kubectl get inferenceservice.serving.kserve.io/wine-predictor
+curl -v -H "Content-Type: application/json" -d @./input.json http://wine-predictor.default.{ingress-IP}.sslip.io/v2/models/wine-predictor/infer
 
 
 [![Open in Code Editor](https://raw.githubusercontent.com/oracle-devrel/oci-code-editor-samples/main/images/open-in-code-editor.png)](https://cloud.oracle.com/?region=home&cs_repo_url=https://github.com/alcampag/oke-mlops.git&cs_branch=main&cs_readme_path=INIT.md&cs_open_ce=false)

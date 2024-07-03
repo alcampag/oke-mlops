@@ -6,11 +6,8 @@ spec:
   predictor:
     serviceAccountName: sa
     model:
-      runtime: kserve-mlserver
       modelFormat:
         name: mlflow
       protocolVersion: v2   # v2 inference protocol API: https://kserve.github.io/website/0.8/modelserving/inference_api/
       storageUri: "s3://{bucket_name}/{experiment_id}/{run_id}/artifacts/model"
-      env:
-        - name: MLSERVER_MODEL_IMPLEMENTATION
-          value: "mlserver_mlflow.MLflowRuntime"
+      runtimeVersion: "1.6.0-mlflow"
