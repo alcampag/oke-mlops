@@ -33,7 +33,7 @@ module "oke" {
   create_vcn = true
   vcn_cidrs = ["10.0.0.0/16"]
   vcn_dns_label = "oke"
-  vcn_name = "oke-alcampag-mlops-vcn"
+  vcn_name = "oke-mlops-vcn"
   lockdown_default_seclist = true
   allow_rules_public_lb ={
     "Allow TCP ingress to public load balancers for HTTPS traffic from anywhere" : { protocol = 6, port = 443, source="0.0.0.0/0", source_type="CIDR_BLOCK"},
@@ -56,7 +56,7 @@ module "oke" {
   # Cluster module
   create_cluster = true
   cluster_kms_key_id = null
-  cluster_name = "oke-alcampag-mlops"
+  cluster_name = "oke-mlops"
   cluster_type = "enhanced"
   cni_type = "npn"  #flannel
   image_signing_keys = []
@@ -72,7 +72,7 @@ module "oke" {
   worker_image_id = local.oke_x86_image_id
   freeform_tags = {
     workers = {
-      "cluster" = "oke-alcampag"
+      "cluster" = "oke-mlops"
     }
   }
   worker_pools = {
