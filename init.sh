@@ -24,8 +24,8 @@ oci ce cluster create-kubeconfig --cluster-id $OKE_ID --file $HOME/.kube/config 
 
 helm repo add istio https://istio-release.storage.googleapis.com/charts
 
-echo "Waiting for at least one node to be ready"
-until kubectl get nodes | grep -i "Ready"; do sleep 1 ;  done
+echo "Waiting for all nodes to be ready"
+kubectl wait --for=condition=Ready nodes --all --timeout=300s
 
 export ISTIO_VERSION="1.20.5"
 echo "Installing Istio"

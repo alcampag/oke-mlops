@@ -2,7 +2,7 @@
 
 
 export OKE_COMPARTMENT=$(tofu output -raw compartment_id)
-export OKE_REGION=$(tofu output -raw region)
+export OKE_REGION=$OCI_REGION
 
 helm uninstall istio-ingressgateway --wait -n istio-system || true
 helm uninstall oke-mlflow --wait -n mlflow || true
