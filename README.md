@@ -66,6 +66,10 @@ kubectl get inferenceservice.serving.kserve.io/wine-predictor
 * Test the inference endpoint with a sample call, be sure to replace the IP from the following command:  
 ``` curl -v -H "Content-Type: application/json" -d @./input.json http://wine-predictor.default.{ingress-IP}.sslip.io/v2/models/wine-predictor/infer ```
 
+# Step 5: Destroy the lab
+
+* Run: ``` chmod +x destroy.sh && ./destroy.sh ```
+* OCI Data Science and the mlflow bucket need to be deleted from the web console
 
 [![Open in Code Editor](https://raw.githubusercontent.com/oracle-devrel/oci-code-editor-samples/main/images/open-in-code-editor.png)](https://cloud.oracle.com/?region=home&cs_repo_url=https://github.com/alcampag/oke-mlops.git&cs_branch=main&cs_readme_path=INIT.md&cs_open_ce=false)
 
